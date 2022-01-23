@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      position: relative;
+      background-color: black;
+      /* cursor: none;*/
+      margin: 0;
+    }
+    h1 {
+      color: #fff;
+    }
+    .cursor_item {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      top: 0;
+      left: 0;
+      margin: -50px 0 0 -50px;
+      transition: all 0.5s cubic-bezier(0.815, 0.020, 0.300, 1.005);
+    }
+    button {
+      font-size: 40px;
+      font-weight: bold;
+      background-color: #fff;
+      color: red;
+      padding: 30px 80px;
+      margin: 50px;
+      cursor: pointer;
+      transition: all .5s cubic-bezier(0.815, 0.020, 0.300, 1.005);;
+    }
+    button:hover{
+      background-color: red;
+      color: #fff;
+      font-size: 150px;
+      padding: 80px 150px;
+    }
+  </style>
+  <script>
+    let cursor_item;
+    let x = 0;
+    let y = 0;
+    let mx = 0;
+    let my = 0;
+    let speed = 0.03;
+
+    window.onload = function() {
+      let $h1 = document.getElementsByTagName("h1")[0];
+      cursor_item = document.getElementsByClassName("cursor_item")[0];
+      window.addEventListener("click", mousefunc, false);
+
+      function mousefunc(e) {
+        x = e.clientX;
+        y = e.clientY;
+        //$h1.innerHTML = "x:" + x + " y:" + y; 
+        cursor_item.style.transform = "translate("+x +"px," + y + "px)";
+      }
+      // loop();
+    }
+    //function loop() {
+      // console.log(1);
+      //mx += (x - mx) * speed;
+      //my += (y - my) * speed;
+
+      //window.requestAnimationFrame(loop);
+    //}
+  </script>
+</head>
+<body>
+  <h1>Test</h1>
+  <div class="cursor_item"></div>
+  <button>START</button>
+</body>
+</html>
